@@ -1,0 +1,22 @@
+---
+
+# Default Role variables for hadoop-repo, can be overwritten in inventory, group_vars, host_vars and extra_variables
+
+# Ambari Version
+ambari_release_version : '2.2.2.18-1'
+ambari_major_version : '2.x' 
+
+# HDP Stack Version
+hdp_release_version : '2.4.2.0'
+hdp_major_version : '2.x'
+
+# HDP UTILS Version
+hdputil_release_version : '1.1.0.20'
+
+
+# Repositories to be setup on hosts
+hadoop_repolist : ['ambari_repo', 'hdp_repo', 'hdputil_repo']
+
+# If Internal Replicated Repository of HWX HDP use that url
+repo_base_url: 'http://public-repo-1.hortonworks.com'
+

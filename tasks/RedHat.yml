@@ -1,0 +1,14 @@
+---
+
+- name: Add Hadoop Repositories 
+  yum_repository:
+    name: "{{ hadoop_repo_info[item]['name'] }}"
+    description: "{{ hadoop_repo_info[item]['description'] }}"
+    baseurl: "{{ hadoop_repo_info[item]['url'] }}"
+    file: "{{ hadoop_repo_info[item]['dest']  }}"
+    gpgkey: "{{ hadoop_repo_info[item]['gpg_key_url'] | default(omit) }}"
+    gpgcheck: "{{ 'yes' if hadoop_repo_info[item]['gpg_key_url'] is defined else 'no' }}"
+    params: "{{ hadoop_repo_info[item]['params'] | default(omit)}}"
+  with_items : "{{ hadoop_repolist }}"
+  when: hadoop_repo_info[item] is defined
+  become: True

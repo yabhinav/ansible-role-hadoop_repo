@@ -1,0 +1,23 @@
+--- 
+# Repo vairables for Debain/Ubuntu Distributions
+
+#############################################
+# DONOT MODIFY UNLESS CHANGE IN REPOSITORY  #
+#############################################
+# Repositories Available in Hortonworks
+# Refer https://docs.hortonworks.com/HDPDocuments/Ambari-2.5.0.3/bk_ambari-installation/content/hdp_stack_repositories.html
+hadoop_repo_info :
+  ambari_repo :
+      name: "Ambari-{{ ambari_release_version }}"
+      url: "{{ repo_base_url }}/ambari/{{ ansible_distribution | lower }}{{ ansible_distribution_major_version }}/{{ ambari_major_version }}/updates/{{ ambari_release_version }} Ambari main"
+      gpg_key_url: "{{ repo_base_url }}/ambari/{{ ansible_distribution | lower }}{{ ansible_distribution_major_version }}/{{ ambari_major_version }}/updates/{{ ambari_release_version }}/ambari-{{ ambari_release_version }}-{{ ansible_distribution | lower }}{{ ansible_distribution_major_version }}.tar.gz.asc"
+  hdp_repo :
+      name: "HDP-{{ hdp_release_version }}"
+      url: "{{ repo_base_url }}/HDP/{{ ansible_distribution | lower }}{{ ansible_distribution_major_version }}/{{ hdp_major_version }}/updates/{{ hdp_release_version }} HDP main"
+      gpg_key_url: "{{ repo_base_url }}/HDP/{{ ansible_distribution | lower }}{{ ansible_distribution_major_version }}/{{ hdp_major_version }}/updates/{{ hdp_release_version }}/HDP-{{ hdp_release_version }}-{{ ansible_distribution | lower }}{{ ansible_distribution_major_version }}-deb.tar.gz.asc"
+  hdputil_repo:
+      name: "HDP-UTILS-{{ hdputil_release_version }}"
+      url: "{{ repo_base_url }}/HDP-UTILS-{{ hdputil_release_version }}/repos/{{ ansible_distribution | lower }}{{ ansible_distribution_major_version }} HDP-UTILS main"
+      gpg_key_url: "{{ repo_base_url }}/HDP-UTILS-{{ hdputil_release_version }}/repos/{{ ansible_distribution | lower }}{{ ansible_distribution_major_version }}/HDP-UTILS-{{ hdputil_release_version }}-{{ ansible_distribution | lower }}{{ ansible_distribution_major_version }}.tar.gz.asc"
+
+

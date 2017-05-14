@@ -1,0 +1,26 @@
+# Repo variables for CentOS/RHEL/Oracle 6.x & 7.x 
+
+#############################################
+# DONOT MODIFY UNLESS CHANGE IN REPOSITORY  #
+#############################################
+# Repositories Available in Hortonworks
+# Refer https://docs.hortonworks.com/HDPDocuments/Ambari-2.5.0.3/bk_ambari-installation/content/hdp_stack_repositories.html
+hadoop_repo_info :
+  ambari_repo :
+      name: "Ambari-{{ ambari_release_version }}"
+      url: "{{ repo_base_url }}/ambari/centos{{ ansible_distribution_major_version }}/{{ ambari_major_version }}/updates/{{ ambari_release_version }}"
+      gpg_key_url: "{{ repo_base_url }}/ambari/centos{{ ansible_distribution_major_version }}/{{ ambari_major_version }}/updates/{{ ambari_release_version }}/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins"
+      dest : "/etc/yum.repos.d/AMBARI"
+      description : "Ambari-{{ ambari_release_version }}"
+  hdp_repo :
+      name: "HDP-{{ hdp_release_version }}"
+      url: "{{ repo_base_url }}/HDP/centos{{ ansible_distribution_major_version }}/{{ hdp_major_version }}/updates/{{ hdp_release_version }}"
+      gpg_key_url: "{{ repo_base_url }}/HDP/centos{{ ansible_distribution_major_version }}/{{ hdp_major_version }}/updates/{{ hdp_release_version }}/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins"
+      dest : "/etc/yum.repos.d/HDP"
+      description : "HDP-{{ hdp_release_version }}"
+  hdputil_repo:
+      name: "HDP-UTILS-{{ hdputil_release_version }}"
+      url: "{{ repo_base_url }}/HDP-UTILS-{{ hdputil_release_version }}/repos/centos{{ ansible_distribution_major_version }}"
+      gpg_key_url: "{{ repo_base_url }}/HDP-UTILS-{{ hdputil_release_version }}/repos/centos{{ ansible_distribution_major_version }}/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins"
+      dest : "/etc/yum.repos.d/HDP-UTILS"
+      description : "HDP-UTILS-{{ hdputil_release_version }}"

@@ -1,0 +1,28 @@
+---
+
+- name: Add Hadoop Repositories 
+  apt_repository: 
+    repo: "deb {{ hadoop_repo_info[item]['url'] }}"
+    state: present
+    filename: "{{ hadoop_repo_info[item]['name'] }}"
+    update_cache: yes
+  with_items: "{{ hadoop_repolist }}"
+  when: hadoop_repo_info[item] is defined
+
+# https://community.hortonworks.com/content/supportkb/48912/how-to-install-the-hortonworks-gpg-key-on-ubuntu.html
+# https://www.cyberciti.biz/faq/pgp-tarball-file-signature-keys-verification/
+# http://keyserver.ubuntu.com/pks/lookup?op=vindex&search=jenkins%40hortonworks.com
+- name: Import Hortonworks Jenkins Public key
+  apt_key:
+    keyserver: 'keyserver.ubuntu.com'
+    id: "{{ item }}"
+    state: present
+  with_items: [ '50931E55', '80FA9A9A', '07513CAD', '7F4627EB', 'B9733A7A07513CAD' ]
+
+- name: Import Hadoop Repo GPG key(s)
+  apt_key:
+    url: "{{ hadoop_repo_info[item]['gpg_key_url'] }}"
+    state: present
+  with_items: "{{ hadoop_repolist }}"
+  when: hadoop_repo_info[item] is defined
+  ignore_errors: yes

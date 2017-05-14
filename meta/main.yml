@@ -1,0 +1,29 @@
+galaxy_info:
+  author: Abhinav Yalamanchili
+  description: Install a Hortonworks Ambari & Hadoop Repo for RHEL/CentOS/Fedora and Debian/Ubuntu. Used by my other roles like yabhinav.ambari_server yabhinav.ambari_agent to install HDP cluster
+
+  license: MIT
+
+  min_ansible_version: 2.1.0.0
+
+  github_branch: master
+
+  platforms:
+    - name: EL
+      versions:
+        - 6
+        - 7
+    - name: Ubuntu
+      versions:
+        - precise
+        - trusty
+        - xenial 
+    - name: Debian
+      versions:
+        - jessie
+        # - wheezy #Debain 8 not supported by HWX
+
+  galaxy_tags: ['AMBARI','HDP', 'HADOOP', 'yum', 'apt']
+
+
+dependencies: []
